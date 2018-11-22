@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>聊天界面</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			border:none;
+			list-style: none;
+		}
+		#title{
+			margin: 0 auto;
+			font-size: 60px;
+			font-weight: bold;
+			line-height: 120px;
+			text-align: center;
+		}
+		.iphone{
+			width: 280px;
+			height: 560px;
+			background-image: url('img/001.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin:0 auto;
+			padding: 36px 0 16px;
+		}
+		#wrap{
+			width: 244px;
+			height: 508px;
+			margin: 0 auto;
+			position: relative;
+		}
+		#content{
+			width: 100%;
+			height: 508px;
+			padding: 10px;
+			overflow: auto;
+			/*background-color: green;*/
+		}
+		#text_box{
+			padding: 10px;
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			bottom: 0;
+			/*z-index: 999;*/
+			background-color: rgba(255,255,255,.9);
+			border-radius: 0 0 24px 24px;
+			box-shadow: 0 -1px 16px 2px rgba(0,0,0,.2);
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+		}
+		#user{
+			width: 30px;
+			height:100%;
+			background-image: url('img/002.jpeg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			box-shadow: 0 0 1px 0px rgba(0,0,0,.2);
+			border-radius: 2px;
+		}
+		#text{
+			height: 100%;
+			width: 140px;
+			padding: 2px;
+		}
+		#text_wrap{
+			width: 100%;
+			height: 100%;
+			line-height: 26px;
+			background:none;
+			border-bottom: 1px solid #999;
+			outline: none;
+		}
+		#btn{
+			width: 44px;
+			height: 24px;
+			margin-top: 3px;
+			background-color: green;
+			border-radius: 2px;
+			text-align: center;
+			font-size: 14px;
+			color: #fff;
+			line-height: 24px;
+		}
+		#list li{
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		#list li.myself{
+			float: right;
+		}
+		#list li.friend{
+			float: left;
+		}
+		#list li img{
+			width: 30px;
+			float: left;
+			margin-right: 10px;
+		}
+		#list li div{
+			position: relative;
+			border-radius: 4px;
+			float: left;
+			min-height: 30px;
+			max-width: 70%;
+			line-height: 22px;
+			padding: 4px 6px;
+			background-color: #fff;
+			word-wrap: break-word;
+		    word-break: break-all;
+		    text-align: justify;
+		}
+		#list li div::after{/*设置三角形*/
+			content:"";
+			position:absolute;
+			border-right:6px solid #fff	;
+			border-top:6px solid transparent;
+			border-bottom:6px solid transparent;
+			top:9px;/*30-12=18/2=9*/
+			left:-6px;
+		}
+		#list li.myself img{
+			float: right;
+		}
+		#list li.myself div{
+			float: right;
+			margin-right: 10px;
+		}
+		#list li.myself div::after{/*设置三角形*/
+			content:"";
+			position:absolute;
+			border-right:none;
+			border-left:6px solid #fff	;
+			top:9px;/*30-12=18/2=9*/
+			left: auto;
+			right: -6px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oUser = document.getElementById('user');
+			var oBtn = document.getElementById('btn');
+			var oUl = document.getElementById('list');
+			var oText = document.getElementById('text_wrap');
+			var on_off = true;
+
+			oUser.onclick = function(){
+				if (on_off) {
+					this.src = 'img/003.jpeg';
+					on_off = false;
+				} else {
+					this.src = 'img/002.jpeg';
+					on_off = true;
+				}
+			}
+			oBtn.onclick = function(){
+				if (oText.value != '') {
+					if (on_off) {
+						oUl.innerHTML = "<li class='myself'><img src='"+oUser.src+"'><div class='mychatbox'>"+oText.value+"</div></li>"+oUl.innerHTML;
+
+					} else{
+						oUl.innerHTML = "<li class='friend'><img src='"+oUser.src+"'><div class='mychatbox'>"+oText.value+"</div></li>"+oUl.innerHTML;
+					}
+					oText.value = "";
+				} else{
+					alert("不支持发送内容为空的消息！");
+				}
+			}		}
+	</script>
+	</head>
+<body>
+	<h1 id="title">点击头像，切换输入用户</h1>
+	<div class="iphone">
+		<div id="wrap">
+			<div id="content">
+				<ul id="list">
+				</ul>
+			</div>
+			<form id="chat" method="post" action>
+				<div id="text_box">
+					<img id="user" src="img/002.jpeg">
+					<div id="text">
+						<input id="text_wrap" type="text" placeholder="请输入聊天内容"></input>
+					</div>
+					<div id="btn">发送</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

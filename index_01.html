@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>变形记</title>
+	<style type="text/css">
+		*{
+			border:0;
+			padding: 0;
+			margin: 0;
+		}
+		#this{
+			width: 200px;
+			height: 200px;
+			background-color: #666;
+			margin:200px auto;	
+			/*overflow: hidden;*/
+			position: relative;
+
+		}
+		#btn{
+			width: 100%;
+			height: 40px;
+			background-color: #333;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 40px;
+			margin: -40px auto;
+			float: left;
+		}
+		#tab{
+			display: none;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,.2);
+			position: fixed;
+			top: 0;
+			z-index: 999;
+		}
+		.bac{
+			width: 400px;
+			height: 300px;
+			margin: 200px auto;
+			margin-right: 0;
+			background-color: #fff;
+			padding: 20px;
+		}
+		.bac span{
+			display: inline-block;
+			width: 80px;
+			height: 40px;
+			margin:0 20px 40px 0;
+			text-align: center;
+			line-height: 40px;
+		}
+		.bac span:nth-child(1),.bac span:nth-child(5),.bac span:nth-child(9){
+			width: 60px;
+		}
+		.bac span:nth-child(2){
+			background-color: red;
+		}
+		.bac span:nth-child(3){
+			background-color: green;
+		}
+		.bac span:nth-child(4){
+			background-color: yellow;
+		}
+		.bac span:nth-child(6),.bac span:nth-child(7),.bac span:nth-child(8),.bac span:nth-child(10),.bac span:nth-child(11),.bac span:nth-child(12){
+			box-sizing: border-box;
+			border:1px solid #333;
+			border-radius: 4px;
+		}
+		.bac div{
+			width: 160px;
+			height: 44px;
+			margin:0 20px;
+			float: left;
+			text-align: center;
+			line-height: 44px;
+			background-color: #333;
+			color: #fff;
+			box-sizing: border-box;
+			border:1px solid #fff;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oTab = document.getElementById('tab');
+			var oBtn01 = document.getElementById('btn_01');
+			var oBtn02 = document.getElementById('btn_02');
+			var oBox = document.getElementById('this');
+			var oCred = document.getElementById('red');
+			var oCgre = document.getElementById('gre');
+			var oCyel = document.getElementById('yel');
+			var oH30 = document.getElementById('H30');
+			var oH35 = document.getElementById('H35');
+			var oH40 = document.getElementById('H40');
+			var oW30 = document.getElementById('W30');
+			var oW35 = document.getElementById('W35');
+			var oW40 = document.getElementById('W40');
+
+
+			oBtn.onclick = function(){
+				oTab.style.display = "block";
+			}
+			oBtn02.onclick = function(){
+				oTab.style.display = "none";
+			}
+			oCred.onclick = function(){
+				oBox.style.backgroundColor = "red";
+			}
+			oCgre.onclick = function(){
+				oBox.style.backgroundColor = "green";
+			}
+			oCyel.onclick = function(){
+				oBox.style.backgroundColor = "yellow";
+			}
+			oH30.onclick = function(){
+				oBox.style.height = "300px";
+			}
+			oH35.onclick = function(){
+				oBox.style.height = "350px";
+			}
+			oH40.onclick = function(){
+				oBox.style.height = "400px";
+			}
+			oW30.onclick = function(){
+				oBox.style.width = "300px";
+			}
+			oW35.onclick = function(){
+				oBox.style.width = "350px";
+			}
+			oW40.onclick = function(){
+				oBox.style.width = "400px";
+			}
+			oBtn01.onclick = function(){
+				oBox.style.width ="200px";
+				oBox.style.backgroundColor ="#666";
+				oBox.style.height ="200px";
+			}
+		}
+	</script>
+
+</head>
+<body>
+	
+	<div id="this">
+		<div id="btn">点我设置～</div>
+	</div>
+	<div id="tab">
+		<div class="bac">
+			<span>颜色：</span>
+			<span id="red">红色</span>
+			<span id="gre">绿色</span>
+			<span id="yel">黄色</span>
+			<span>长度：</span>
+			<span id="H30">300</span>
+			<span id="H35">350</span>
+			<span id="H40">400</span>
+			<span>宽度：</span>
+			<span id="W30">300</span>
+			<span id="W35">350</span>
+			<span id="W40">400</span>
+			<div id="btn_01">重置</div> 
+			<div id="btn_02">确定</div>
+		</div>
+	</div>
+</body>
+</html>

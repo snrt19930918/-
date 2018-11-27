@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>💕Wuli时间胶囊＆依佳💕</title>
+	<link rel="shortcut icon" href="img/cyj.ico"/>
+	<style type="text/css">
+		*{
+			border:none;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			border-top: 20px solid transparent;
+			background-image: url('img/bg.jpeg');
+			background-size:cover;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+		}
+		#audio{
+			position: fixed;
+			z-index: 999;
+		}
+		.content{
+			position: fixed;
+			z-index: 998;
+			width: 1000px;
+			height: 700px;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+			background-color: rgba(255,255,255,.9);
+			box-shadow: 0 0 16px 2px rgba(0,0,0,.2);
+			border-radius: 10px;
+			padding: 20px 40px 40px;
+		}
+		#text{
+			width: 1000px;
+			min-height: 60px;
+			border-radius: 10px;
+			margin: 710px auto 20px;
+			background-color: #fff;
+			text-align: center;
+			line-height: 30px;
+			box-shadow: 0 0 16px 2px rgba(0,0,0,.2);
+			padding: 15px 10px;
+		}
+		.tab{
+			width: 320px;
+			height:44px;
+			margin: 0 auto 20px;
+			overflow: hidden;
+			border-radius:4px;
+			box-shadow: 0 0 4px 1px rgba(0,0,0,.2)
+		}
+		.tab div{
+			width: 50%;
+			float: left;
+			text-align: center;
+			line-height: 44px;
+			background-color: rgba(0,0,0,.1);
+		}
+		.tab .tab_01{
+			background-color:green;
+			color: #fff;
+		}
+		.tab_02:hover{
+			background-color: #333;
+			color:#fff;
+		}
+		.pic_box{
+			width: 100%;
+			height: 576px;
+			/*background-color: #eee;*/
+			position: relative;
+			/*overflow: hidden;*/
+		}
+		.pic_box:hover .btn{
+			display: block;
+		}
+		#image{
+			position: absolute;
+			display: block;
+			margin: auto;
+			/*background-image: url('img/003.jpeg');*/
+			max-width: 920px;
+			max-height: 576px;
+			top:0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+		.btn{
+			display: none;
+			width: 40px;
+			height: 80px;
+			font-size: 30px;
+			text-align: center;
+			background-color: rgba(0,0,0,.2);
+			line-height: 80px;
+			position: absolute;
+			top: 44%;
+			bottom: 0;
+			color: #fff;
+		}
+		.btn:hover{
+			background-color: rgba(0,0,0,.4);
+		}
+		#previous{
+			padding-right: 16px;
+			left: 0;
+			border-radius: 0 8px 8px 0;
+		}
+		#next{
+			padding-left: 16px;
+			right: 0;
+			border-radius: 8px 0 0 8px;
+		}
+		#num{
+			display: block;
+			width: 80px;
+			height: 20px;
+			margin: 10px auto;
+			color: #333;
+			line-height: 20px;
+			text-align: center;
+			background-color: rgba(0,0,0,.1);
+			border-radius: 15px;	
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function () {
+				var oLoop = document.getElementById('loop');
+				var oNolp = document.getElementById('nolp');
+				var oImg = document.getElementById('image');
+				var oText = document.getElementById('text');
+				var oNext = document.getElementById('next');
+				var oPre = document.getElementById('previous');
+				var oAudio = document.getElementById('audio');
+				var oNum = document.getElementById('num');
+				var arrText = ['啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就 啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就','啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就 啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我我爱我带我就打我就啊我我和我我哦啊发hi我爱hi哦啊我hi哦啊我觉得哇哦艾薇我我等会就爱玩我我的海岸和我','第三句','第四句','第五句','第六句','第七句','第八句','第九句'];
+				var arrUrl = ['img/cyj001.jpg','img/cyj002.jpg','img/cyj003.jpg','img/cyj004.jpg','img/cyj005.jpg','img/cyj006.jpg','img/cyj007.jpg','img/cyj008.jpg','img/cyj009.jpg'];
+				var num = 0;
+
+				function fnTab(){
+					oNum.innerHTML = num + 1  + ' / ' + arrText.length;
+					oImg.src = arrUrl[num];	
+					oText.innerHTML = arrText[num];
+				}
+				fnTab();
+				tab_1();
+
+
+
+				// 顺序模式
+				function tab_1(){
+					oNext.onclick = function(){
+						num++
+						if (num == arrText.length) {
+							num = arrText.length - 1;
+							alert("更多回忆正在加工制造中！敬请期待～");
+						}
+						fnTab();
+						window.scroll(0,0);
+					}
+					oPre.onclick = function(){
+						num--
+						if (num == -1) {
+							num = 0;
+							alert("很遗憾，为了相遇我们花费了太多太多的时间，没有更多之前的回忆了~ 💕 ");
+						}
+						fnTab();
+						window.scroll(0,0);
+					}
+				}
+				// 循环模式
+				function tab_2(){
+					oNext.onclick = function(){
+						num++
+						if (num == arrText.length) {
+							num = 0;
+						}
+						fnTab();
+						window.location.hash = "#top";
+					}
+					oPre.onclick = function(){
+						num-- 
+						if (num == -1) {
+							num = arrText.length - 1;
+						}
+						fnTab();
+						window.location.hash = "#top";
+					}
+				}
+
+				// 循环模式开关
+				oLoop.onclick = function(){
+					oLoop.className = "tab_01";
+					oNolp.className = "tab_02";
+					tab_2();
+				}
+				// 顺序模式开关
+				oNolp.onclick = function(){
+					oLoop.className = "tab_02";
+					oNolp.className = "tab_01";
+					tab_1();
+				}
+				oAudio.play();
+		}
+	</script>
+</head>
+<body>
+	<audio id="audio" autoplay  loop="loop" >
+		<source src="music/001.mp3" type="audio/mpeg">
+	</audio>
+	<div class="content">
+		<div class="tab">
+			<div id="loop" class="tab_02">天荒地老</div>
+			<div id="nolp" class="tab_01">一次就好</div>
+		</div>
+		<div class="pic_box">
+			<img id="image" alt="和Wuli小白的日常 :) " src="img/003.jpeg">
+			<div id="previous" class="btn">〈 </div>
+			<div id="next" class="btn">〉</div>
+		</div>
+		<span id="num">1 / 4</span>
+	</div>
+	<div id="text">美好时光读档中～ 请耐心哟  O(∩_∩)O哈哈~</div>
+	<div class="label">	
+	</div>
+</body>
+</html>

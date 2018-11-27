@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>随机设卡</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+		}
+		#color_box span{
+			display: block;
+			float: left;
+			padding: 15px 20px;
+			font-weight: bold;
+			color: #fff;
+			background-color: pink;  
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload = function(){
+			//ES5写法：
+				/*
+				var oDiv = document.querySelector('#color_box');
+				//生成随机整数的函数 ，min是数集的左边界，max是数集的右边界；
+					var randomInt = function (min,max){
+						var randomNum = Math.random()*(max+1-min)+min;
+						return Math.floor(randomNum);	
+					};
+				//随机rgb
+					var rgb = function (){
+						var   Red = randomInt(0,255),
+							  Green = randomInt(0,255),
+							  Blue = randomInt(0,255);
+						return `rgb(${Red},${Green},${Blue})`;
+					};
+				//随机rgba
+					var rgba = function (){ 
+						var   Red = randomInt(0,255),
+							  Green = randomInt(0,255),
+							  Blue = randomInt(0,255),
+							  Opacity = Math.random().toFixed(1);
+						return `rgb(${Red},${Green},${Blue},${Opacity})`;
+					};
+				//随机16进制色值		
+					var color_16 = function(){
+						var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f']
+						var color = '#';
+						for(var i=0;i<6;i++){//循环6次，16进制的6个值
+							color += arr[randomInt(0,arr.length-1)];//随机取arr[]数组里面的一个值 
+						}	
+						return color;
+					}
+				*/
+			//ES6写法；
+				const oDiv = document.querySelector('#color_box');
+				const randomInt = (min,max)=> Math.floor(Math.random()*(max+1-min)+min);
+				const rgb = () => `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`;
+				const rgba = () => `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)},${Math.random().toFixed(1)})`;
+				
+				/*
+				let arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+				let color = '#'
+				const color_16 = ()=> 
+				*/
+
+
+			//无限生成颜色盒子
+			function addSpan(){
+				var _color = rgba();
+				oDiv.innerHTML += `<span style='background-color:${_color};'>${_color}</span>`
+			} ;
+			//动画定时器，每800毫秒执行一次 addSpan() 函数；
+			setInterval(addSpan,800);	
+		}
+	</script>
+</head>
+<body>
+	<div id="color_box">
+	</div>
+</body>
+</html>
